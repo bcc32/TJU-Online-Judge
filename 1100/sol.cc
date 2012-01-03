@@ -29,7 +29,7 @@ int main(void)
             cout << "No estimate for this data set." << endl;
         else
         {
-            cout.setf(ios_base::fixed);
+            cout.setf(ios::fixed);
             cout.precision(6);
             cout << sqrt(6.0 * y / x) << endl;
         }
