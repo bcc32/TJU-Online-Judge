@@ -3,6 +3,9 @@
 #include <algorithm>
 using namespace std;
 
+int atoi(string s);
+string itoa(int n);
+
 int main(void)
 {
     int n;
@@ -10,27 +13,28 @@ int main(void)
     for (int i = 0; i < n; i++)
     {
         int a, b;
-        ostringstream x, y;
-        stringstream ss (stringstream::in | stringstream::out);
-        string foo, bar;
         cin >> a >> b;
-        x << a;
-        y << b;
-        foo = x.str();
-        bar = y.str();
+        string foo = itoa(a), bar = itoa(b);
         reverse(foo.begin(), foo.end());
         reverse(bar.begin(), bar.end());
-        ss << foo << " " << bar;
-        ss >> a >> b;
-        int m = a + b;
-        ostringstream mm;
-        mm << m;
-        string z = mm.str();
-        reverse(z.begin(), z.end());
-        stringstream zz (stringstream::in | stringstream::out);
-        zz << z;
-        int zx;
-        zz >> zx;
-        cout << zx << endl;
+        string ss = itoa(atoi(foo) + atoi(bar));
+        reverse(ss.begin(), ss.end());
+        cout << atoi(ss) << endl;
     }
+}
+
+int atoi(string s)
+{
+    int n;
+    stringstream ss(stringstream::in | stringstream::out);
+    ss << s;
+    ss >> n;
+    return n;
+}
+
+string itoa(int n)
+{
+    stringstream ss(stringstream::in | stringstream::out);
+    ss << n;
+    return ss.str();
 }
