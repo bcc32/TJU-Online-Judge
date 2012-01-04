@@ -4,7 +4,7 @@
 #include <sstream>
 using namespace std;
 
-int atoi(string s); // TODO
+int atoi(string s);
 
 int main(void)
 {
