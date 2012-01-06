@@ -1,4 +1,3 @@
-// FIXME LAST CHAR NOT LAST OUTPUT
 #include <iostream>
 using namespace std;
 
