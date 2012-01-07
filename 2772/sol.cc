@@ -1,7 +1,6 @@
 #include <iostream>
+#define sqr(x) ((x) * (x))
 using namespace std;
-
-int sqr(int x);
 
 int main(void)
 {
@@ -17,9 +16,4 @@ int main(void)
         else
             cout << "No" << endl;
     }
-}
-
-int sqr(int x)
-{
-    return x * x;
 }
