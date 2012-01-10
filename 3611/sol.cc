@@ -1,28 +1,30 @@
 #include <iostream>
+#include <set>
 using namespace std;
 
-bool coprime(int a, int b);
+int sum(set<int> s);
 
 int main(void)
 {
     int n;
     for (cin >> n; n != 0; cin >> n)
     {
-        int s = 0;
+        set<int> s;
         for (int i = 2; i < n; i++)
-            if (!coprime(i, n))
-            {
-                s += i;
-                s %= 1000000007;
-            }
-        cout << s << endl;
+            if (n % i == 0)
+                for (int j = 1; i * j < n; j++)
+                    s.insert(i * j);
+        cout << sum(s) << endl;
     }
 }
 
-bool coprime(int a, int b) // a < b
+int sum(set<int> s)
 {
-    for (int i = 2; i <= a; i++)
-        if (a % i == 0 && b % i == 0)
-            return false;
-    return true;
+    int x = 0;
+    for (set<int>::iterator it = s.begin(); it != s.end(); it++)
+    {
+        x += *it;
+        x %= 1000000007;
+    }
+    return x;
 }
