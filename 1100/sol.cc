@@ -14,6 +14,8 @@ int gcd(int a, int b)
 
 int main(void)
 {
+    cout.setf(ios::fixed);
+    cout.precision(6);
     int n;
     for (cin >> n; n != 0; cin >> n)
     {
@@ -28,10 +30,6 @@ int main(void)
         if (x == 0)
             cout << "No estimate for this data set." << endl;
         else
-        {
-            cout.setf(ios::fixed);
-            cout.precision(6);
             cout << sqrt(6.0 * y / x) << endl;
-        }
     }
 }
