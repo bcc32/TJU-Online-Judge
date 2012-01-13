@@ -6,7 +6,7 @@ bool isprime(int n);
 
 int main(void)
 {
-    int *p = (int *) malloc(100000 * sizeof(int));
+    int *p = (int *)malloc(100000 * sizeof(int));
     int c = 0;
     for (int i = 2; i <= 1299709; i++)
         if (isprime(i))

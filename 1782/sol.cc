@@ -7,7 +7,7 @@ int main(void)
     int n;
     for (cin >> n; n != 0; cin >> n)
     {
-        int *v = (int *) malloc(n * sizeof(int));
+        int *v = (int *)malloc(n * sizeof(int));
         for (int i = 0; i < n; i++)
             cin >> v[i];
         int max = 0;
