@@ -1,6 +1,5 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <set>
 using namespace std;
 
 int main(void)
@@ -11,27 +10,31 @@ int main(void)
     {
         int m;
         cin >> m;
-        vector<int> v(m);
+        set<int> s;
         for (int j = 0; j < m; j++)
-            cin >> v[j];
-        sort(v.begin(), v.end());
+        {
+            int x;
+            cin >> x;
+            s.insert(x);
+        }
         cin >> m;
         for (int j = 0; j < m; j++)
         {
-            string s;
-            cin >> s;
-            if (s == "add")
+            string str;
+            cin >> str;
+            if (str == "add")
             {
                 int x;
                 cin >> x;
-                v.push_back(x);
-                sort(v.begin(), v.end());
+                s.insert(x);
             }
-            else if (s == "mid")
-                if (v.size() % 2 == 0)
-                    cout << v[v.size() / 2 - 1] << endl;
-                else
-                    cout << v[v.size() / 2] << endl;
+            else if (str == "mid")
+            {
+                set<int>::iterator it = s.begin();
+                int n = s.size() % 2 == 0 ? s.size() / 2 - 1 : s.size() / 2;
+                for (int i = 0; i < n; i++) it++;
+                cout << *it << endl;
+            }
         }
     }
 }
