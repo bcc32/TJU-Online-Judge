@@ -7,9 +7,9 @@ int main(void)
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        int a, b;
+        string a, b;
         cin >> a >> b;
-        if (a >= b)
+        if (a.size() > b.size() || (a.size() >= b.size() && a >= b))
             cout << "MMM BRAINS" << endl;
         else
             cout << "NO BRAINS" << endl;
