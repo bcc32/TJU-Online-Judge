@@ -7,20 +7,20 @@ int main(void)
     int n;
     for (cin >> n; n != 0; cin >> n)
     {
-        set<int> s;
+        set<long long> s;
         for (int i = 0; i < n; i++)
         {
             char c;
             cin >> c;
             if (c == 'B')
             {
-                int x;
+                long long x;
                 cin >> x;
                 s.insert(x);
             }
             else if (c == 'G')
             {
-                set<int>::iterator it = s.begin();
+                set<long long>::iterator it = s.begin();
                 cout << *it << endl;
                 s.erase(it);
             }
