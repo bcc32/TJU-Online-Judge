@@ -17,11 +17,14 @@ int main(void)
                 x %= 200907;
             }
         else if (c * a == b * b)
+        {
+            k %= 200907;
             for (int i = 1; i < k; i++)
             {
                 x *= r;
                 x %= 200907;
             }
+        }
         cout << x << endl;
     }
 }
