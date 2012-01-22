@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 int main(void)
@@ -7,18 +9,13 @@ int main(void)
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        int m, c = 0;
+        int m;
         cin >> m;
-        string s;
-        cin.ignore(1, '\n');
+        vector<string> v(m);
         for (int j = 0; j < m; j++)
-        {
-            cin >> s;
-            if (s == "sheep")
-                c++;
-        }
-        cout << "Case " << i + 1 << ": This list contains " << c << " sheep." 
-            << endl;
+            cin >> v[j];
+        cout << "Case " << i + 1 << ": This list contains "
+            << count(v.begin(), v.end(), "sheep") << " sheep." << endl;
         if (i < n - 1)
             cout << endl;
     }
