@@ -1,9 +1,7 @@
 #include <iostream>
-#include <sstream>
-#include <algorithm>
 using namespace std;
 
-string itoa(int n);
+string ritoa(int n);
 int atoi(string s);
 
 int main(void)
@@ -14,26 +12,30 @@ int main(void)
     {
         int a, b;
         cin >> a >> b;
-        string x = itoa(a);
-        reverse(x.begin(), x.end());
-        string y = itoa(b);
-        reverse(y.begin(), y.end());
+        string x = ritoa(a);
+        string y = ritoa(b);
         cout << atoi(x) + atoi(y) << endl << endl;
     }
 }
 
-string itoa(int n)
+string ritoa(int n)
 {
-    ostringstream ss;
-    ss << n;
-    return ss.str();
+    string s;
+    while (n > 0)
+    {
+        s += (char)(n % 10) + '0';
+        n /= 10;
+    }
+    return s;
 }
 
 int atoi(string s)
 {
-    int n;
-    stringstream ss(stringstream::in | stringstream::out);
-    ss << s;
-    ss >> n;
+    int n = 0;
+    for (string::iterator it = s.begin(); it < s.end(); it++)
+    {
+        n *= 10;
+        n += (int)(*it - '0');
+    }
     return n;
 }
