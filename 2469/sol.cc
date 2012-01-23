@@ -32,9 +32,10 @@ int main(void)
                 }
             if (!f)
             {
-                v.push_back(set<int>());
-                v.back().insert(a);
-                v.back().insert(b);
+                set<int> s;
+                s.insert(a);
+                s.insert(b);
+                v.push_back(s);
             }
         }
         for (int j = 1; j <= n; j++)
@@ -48,8 +49,9 @@ int main(void)
                 }
             if (!f)
             {
-                v.push_back(set<int>());
-                v.back().insert(j);
+                set<int> s;
+                s.insert(j);
+                v.push_back(s);
             }
         }
         cout << v.size() << endl;
