@@ -33,14 +33,8 @@ string add(string a, string b)
             x += (int)b[i] - (int)'0';
         if (c)
             x++;
-        if (x > 9)
-        {
-            c = true;
-            x -= 10;
-        }
-        else
-            c = false;
-        s += (char)x + '0';
+        c = x > 9;
+        s += (char)(x % 10) + '0';
     }
     if (c)
         s += '1';
