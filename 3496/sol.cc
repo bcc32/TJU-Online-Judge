@@ -1,8 +1,8 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-string ritoa(int n);
-int atoi(string s);
+string add(string a, string b);
 
 int main(void)
 {
@@ -10,32 +10,29 @@ int main(void)
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        int a, b;
+        string a, b;
         cin >> a >> b;
-        string x = ritoa(a);
-        string y = ritoa(b);
-        cout << atoi(x) + atoi(y) << endl << endl;
+        cout << add(a, b) << endl << endl;
     }
 }
 
-string ritoa(int n)
+string add(string a, string b)
 {
     string s;
-    while (n > 0)
+    bool c = false;
+    for (int i = 0; i < a.size() || i < b.size(); i++)
     {
-        s += (char)(n % 10) + '0';
-        n /= 10;
+        int x = 0;
+        if (i < a.size())
+            x += (int)(a[i] - '0');
+        if (i < b.size())
+            x += (int)(b[i] - '0');
+        if (c) x++;
+        c = x > 9;
+        s += (char)(x % 10) + '0';
     }
+    if (c)
+        s += '1';
+    reverse(s.begin(), s.end());
     return s;
-}
-
-int atoi(string s)
-{
-    int n = 0;
-    for (string::iterator it = s.begin(); it < s.end(); it++)
-    {
-        n *= 10;
-        n += (int)(*it - '0');
-    }
-    return n;
 }
