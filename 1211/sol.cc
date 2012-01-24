@@ -11,6 +11,8 @@ int main(void)
     for (int i = 0; i < a.size(); i++)
         m[a[i]] = b[i];
     cin.get();
+    cout << b << endl;
+    cout << a << endl;
     string s;
     for (getline(cin, s); !cin.eof(); getline(cin, s))
     {
