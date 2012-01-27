@@ -1,6 +1,6 @@
 #include <iostream>
-#define vowelq(c) ((c) == 'a' || (c) == 'e' || (c) == 'i' || (c) == 'o' || \
-    (c) == 'u')
+#define vowelq(c) \
+    ((c) == 'a' || (c) == 'e' || (c) == 'i' || (c) == 'o' ||  (c) == 'u')
 using namespace std;
 
 bool t1(string s);
@@ -22,20 +22,20 @@ int main(void)
 bool t1(string s)
 {
     for (string::iterator it = s.begin(); it < s.end(); it++)
-        if (vowelq(*it))
-            return true;
+        if (vowelq(*it)) return true;
     return false;
 }
 
 bool t2(string s)
 {
-    bool b1 = vowelq(s[0]), b2 = vowelq(s[1]);
-    for (string::iterator it = s.begin() + 2; it < s.end(); it++)
+    int b1 = 0, b2 = 0;
+    for (string::iterator it = s.begin(); it < s.end(); it++)
     {
-        if ((vowelq(*it) && b1 && b2) || (!vowelq(*it) && !b1 && !b2))
+        if ((vowelq(*it) && b1 == 1 && b2 == 1) ||
+            (!vowelq(*it) && b1 == 2 && b2 == 2))
             return false;
         b1 = b2;
-        b2 = vowelq(*it);
+        b2 = vowelq(*it) ? 1 : 2;
     }
     return true;
 }
@@ -43,7 +43,7 @@ bool t2(string s)
 bool t3(string s)
 {
     char l = ' ';
-    for (string::iterator it = s.begin() + 1; it < s.end(); it++)
+    for (string::iterator it = s.begin(); it < s.end(); it++)
     {
         if (*it == l && l != 'e' && l != 'o') return false;
         l = *it;
