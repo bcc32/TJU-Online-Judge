@@ -6,15 +6,19 @@ int nfactor(int n);
 
 int main(void)
 {
-    vector<int> v(1000000);
-    for (int i = 0; i < 1000000; i++)
-        v[i] == nfactor(i + 1);
+    vector<int> v;
     int a, b;
     for (cin >> a >> b; !cin.eof(); cin >> a >> b)
     {
         int c = 0;
+        if (b > v.size())
+        {
+            v.resize(b + 1);
+            for (int i = v.size() + 1; i < b; i++)
+                v[i] = nfactor(i);
+        }
         for (int i = a; i <= b; i++)
-            if (i % v[i - 1] == 0) c++;
+            if (i % v[i] == 0) c++;
         cout << c << endl;
     }
 }
