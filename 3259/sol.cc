@@ -1,12 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int nfactor(int n);
 
 int main(void)
 {
-    vector<int> v;
+    vector<bool> v(1);
+    v[0] = 0;
     int a, b;
     for (cin >> a >> b; !cin.eof(); cin >> a >> b)
     {
@@ -16,11 +18,9 @@ int main(void)
             int s = v.size();
             v.resize(b + 1);
             for (int i = s; i <= b; i++)
-                v[i] = nfactor(i);
+                v[i] = i % nfactor(i) == 0;
         }
-        for (int i = a; i <= b; i++)
-            if (i % v[i] == 0) c++;
-        cout << c << endl;
+        cout << count(v.begin(), v.end(), true) << endl;
     }
 }
 
