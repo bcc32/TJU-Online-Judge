@@ -13,12 +13,9 @@ int main(void)
     cin.get();
     cout << b << endl;
     cout << a << endl;
-    string s;
-    for (getline(cin, s); !cin.eof(); getline(cin, s))
-    {
-        for (string::iterator it = s.begin(); it < s.end(); it++)
-            if (m.find(*it) != m.end())
-                *it = m[*it];
-        cout << s << endl;
-    }
+    for (char c = cin.get(); !cin.eof(); c = cin.get())
+        if (m.find(c) != m.end())
+            cout << m[c];
+        else
+            cout << c;
 }
