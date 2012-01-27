@@ -10,7 +10,7 @@ bool t3(string s);
 int main(void)
 {
     string s;
-    for (cin >> s; !cin.eof(); cin >> s)
+    for (cin >> s; s != "end"; cin >> s)
     {
         if (t1(s) && t2(s) && t3(s))
             cout << "<" << s << "> is acceptable." << endl;
