@@ -29,7 +29,7 @@ bool t1(string s)
 
 bool t2(string s)
 {
-    bool b1, b2;
+    bool b1 = vowelq(s[0]), b2 = vowelq(s[1]);
     for (string::iterator it = s.begin() + 2; it < s.end(); it++)
     {
         if ((vowelq(*it) && b1 && b2) || (!vowelq(*it) && !b1 && !b2))
@@ -42,7 +42,7 @@ bool t2(string s)
 
 bool t3(string s)
 {
-    char l;
+    char l = ' ';
     for (string::iterator it = s.begin() + 1; it < s.end(); it++)
     {
         if (*it == l && l != 'e' && l != 'o') return false;
