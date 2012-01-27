@@ -1,12 +1,8 @@
 #include <iostream>
 #include <vector>
-#include <map>
-#include <utility>
-#include <algorithm>
 #define abs(x) ((x) > 0 ? (x) : -(x))
+#define MIN 10000000
 using namespace std;
-
-bool cmp(pair< pair<int, int>, int > a, pair< pair<int, int>, int > b);
 
 int main(void)
 {
@@ -23,15 +19,18 @@ int main(void)
             for (int k = 0; k < a; k++)
                 cin >> v[j][k];
         }
-        map< pair<int, int>, int > m;
+        int m = MIN;
         for (int j = 0; j < b; j++)
             for (int k = 0; k < a; k++)
+            {
+                int c = 0;
                 for (int _j = 0; _j < b; _j++)
                     for (int _k = 0; _k < a; _k++)
-                        m[make_pair(j, k)] += v[_j][_k] *
-                            (abs(_j - j) + abs(_k - k));
-        cout << max_element(m.begin(), m.end(), cmp)->second << " blocks"
-            << endl;
+                        c += v[_j][_k] * (abs(_j - j) + abs(_k - k));
+                if (c < m)
+                    m = c;
+            }
+        cout << m << " blocks" << endl;
     }
 }
 
