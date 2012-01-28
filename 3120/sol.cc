@@ -2,6 +2,8 @@
 #include <vector>
 using namespace std;
 
+int max(vector<int> v, int i);
+
 int main(void)
 {
     int n;
@@ -10,17 +12,27 @@ int main(void)
         vector<int> v(n);
         for (int i = 0; i < n; i++)
             cin >> v[i];
-        int m = 0, c = 1;
-        for (vector<int>::iterator it = v.begin() + 1; it < v.end(); it++)
+        int m = 0;
+        for (int i = 0; i < v.size(); i++)
         {
-            if (*it > *(it - 1)) c++;
-            else
-            {
-                if (c > m)
-                    m = c;
-                c = 1;
-            }
+            int x = max(v, i);
+            if (x > m)
+                m = x;
         }
         cout << m << endl;
     }
+}
+
+int max(vector<int> v, int i)
+{
+    if (i = v.size() - 1) return v[i];
+    int s = 0;
+    for (int j = i + 1; j < v.size(); j++)
+    {
+        if (v[j] <= v[i]) continue;
+        int m = max(v, j);
+        if (m > s)
+            s = m;
+    }
+    return s;
 }
