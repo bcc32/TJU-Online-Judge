@@ -15,9 +15,9 @@ bool test(vector<string> v)
 {
     for (int i = 0; i < v.size(); i++)
     {
-        if (v.at(i).size() == 0)
+        if (v[i].size() == 0)
             return true;
-        else if (count(v.begin(), v.end(), v.at(i)) > 1)
+        else if (count(v.begin(), v.end(), v[i]) > 1)
             return true;
     }
     return false;
@@ -30,7 +30,7 @@ int main(void)
     {
         vector<string> v(n);
         for (int i = 0; i < n; i++)
-            cin >> v.at(i);
+            cin >> v[i];
         int c;
         for (c = 0; !test(v); c++)
             v = ld(v);

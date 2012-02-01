@@ -7,7 +7,7 @@ string permute(string s, vector<int> key)
 {
     string temp(s);
     for (int i = 0; i < key.size(); i++)
-        temp[key.at(i) - 1] = s[i];
+        temp[key[i] - 1] = s[i];
     return temp;
 }
 
@@ -18,7 +18,7 @@ int main(void)
     {
         vector<int> key(n);
         for (int i = 0; i < n; i++)
-            cin >> key.at(i);
+            cin >> key[i];
         int k;
         for (cin >> k; k != 0; cin >> k)
         {

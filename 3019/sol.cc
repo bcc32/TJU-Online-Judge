@@ -11,12 +11,12 @@ int main(void)
         unsigned long long c = 0;
         vector<int> v(n);
         for (int i = 0; i < n; i++)
-            cin >> v.at(i);
+            cin >> v[i];
         for (int i = v.size() - 1; i >= 0; i--)
         {
-            c += v.at(i);
+            c += v[i];
             for (int j = 0; j < i; j++)
-                v.at(j) += v.at(i);
+                v[j] += v[i];
         }
         cout << c << endl;
     }

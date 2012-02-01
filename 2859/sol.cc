@@ -10,9 +10,9 @@ int main(void)
     {
         vector<int> v(n);
         for (int i = 0; i < n; i++)
-            cin >> v.at(i);
+            cin >> v[i];
         sort(v.begin(), v.end());
-        int max = v.at(v.size() - 1);
+        int max = v.back();
         for (vector<int>::iterator it = v.end() - 1; it >= v.begin(); it--)
         {
             if (*it < max)

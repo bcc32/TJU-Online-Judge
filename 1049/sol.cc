@@ -21,13 +21,13 @@ int main(void)
     {
         vector<rect> v(n);
         for (int i = 0; i < n; i++)
-            cin >> v.at(i).xmin >> v.at(i).xmax >> v.at(i).ymin >> v.at(i).ymax;
+            cin >> v[i].xmin >> v[i].xmax >> v[i].ymin >> v[i].ymax;
         int c = 0;
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
                 if (i == j)
                     continue;
-                else if (v.at(j).covers(v.at(i)))
+                else if (v[j].covers(v[i]))
                 {
                     c++;
                     break;

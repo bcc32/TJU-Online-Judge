@@ -8,7 +8,7 @@ int sim(string m, vector<string> f)
     for (int i = 0; i < m.size(); i++)
         for (int j = 0; j < f.size(); j++)
         {
-            char ch = f.at(j)[i];
+            char ch = f[j][i];
             if (m[i] == ch) c++;
             else if ((m[i] == 'S' && ch == 'P') || 
                 (m[i] == 'P' && ch == 'R') || (m[i] == 'R' && ch == 'S'))
@@ -20,30 +20,30 @@ int sim(string m, vector<string> f)
 int max(vector<string> f)
 {
     int c = 0;
-    for (int i = 0; i < f.at(0).size(); i++)
+    for (int i = 0; i < f[0].size(); i++)
     {
         int max = 0;
         int count = 0;
         for (int j = 0; j < f.size(); j++)
-            if (f.at(j)[i] == 'P')
+            if (f[j][i] == 'P')
                 count++;
-            else if (f.at(j)[i] == 'R')
+            else if (f[j][i] == 'R')
                 count += 2;
         if (count > max)
             max = count;
         count = 0;
         for (int j = 0; j < f.size(); j++)
-            if (f.at(j)[i] == 'R')
+            if (f[j][i] == 'R')
                 count++;
-            else if (f.at(j)[i] == 'S')
+            else if (f[j][i] == 'S')
                 count += 2;
         if (count > max)
             max = count;
         count = 0;
         for (int j = 0; j < f.size(); j++)
-            if (f.at(j)[i] == 'S')
+            if (f[j][i] == 'S')
                 count++;
-            else if (f.at(j)[i] == 'P')
+            else if (f[j][i] == 'P')
                 count += 2;
         if (count > max)
             max = count;
@@ -63,7 +63,7 @@ int main(void)
     vector<string> f(n);
     cin.get();
     for (int i = 0; i < n; i++)
-        cin >> f.at(i);
+        cin >> f[i];
     cout << sim(m, f) << endl;
     cout << max(f) << endl;
 }

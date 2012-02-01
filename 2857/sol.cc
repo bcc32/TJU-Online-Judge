@@ -13,13 +13,13 @@ int main(void)
     {
         vector<string> v(n);
         for (int i = 0; i < n; i++)
-            cin >> v.at(i);
+            cin >> v[i];
         for (int i = 0; i < n; i++)
-            sort(v.at(i).begin(), v.at(i).end());
-        int max = atoi(v.at(0));
+            sort(v[i].begin(), v[i].end());
+        int max = atoi(v[0]);
         for (int i = 1; i < n; i++)
-            if (atoi(v.at(i)) > max)
-                max = atoi(v.at(i));
+            if (atoi(v[i]) > max)
+                max = atoi(v[i]);
         cout << max << endl;
     }
 }

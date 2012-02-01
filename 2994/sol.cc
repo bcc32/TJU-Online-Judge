@@ -12,12 +12,12 @@ int main(void)
         cin >> m;
         vector<int> u(m), v(m);
         for (int j = 0; j < m; j++)
-            cin >> u.at(j);
+            cin >> u[j];
         for (int j = 0; j < m; j++)
-            cin >> v.at(j);
+            cin >> v[j];
         long long s = 0;
         for (int j = 0; j < m; j++)
-            s += u.at(j) * v.at(j);
+            s += u[j] * v[j];
         cout << s << endl;
     }
 }

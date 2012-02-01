@@ -15,7 +15,7 @@ int main(void)
                 v.push_back(powm10(i, j));
     int m, n;
     for (cin >> m >> n; m != 0 || n != 0; cin >> m >> n)
-        cout << v.at((m % 4) * 4 + (n % 4)) << endl;
+        cout << v[(m % 4) * 4 + (n % 4)] << endl;
 }
 
 int powm10(int b, int e)

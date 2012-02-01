@@ -14,10 +14,9 @@ int main(void)
             v.push_back(m);
         int c = 0;
         for (int i = 0; i < v.size(); i++)
-            if (v.at(i) % 2 == 0)
+            if (v[i] % 2 == 0)
                 for (int j = 0; j < v.size(); j++)
-                    if (v.at(j) * 2 == v.at(i))
-                        c++;
+                    if (v[j] * 2 == v[i]) c++;
         cout << c << endl;
     }
 }

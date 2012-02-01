@@ -7,16 +7,16 @@ bool test(vector< vector<int> > v)
     for (int i = 0; i < v.size(); i++)
     {
         int s = 0;
-        for (int j = 0; j < v.at(i).size(); j++)
-            s += v.at(i).at(j);
+        for (int j = 0; j < v[i].size(); j++)
+            s += v[i][j];
         if (s % 2 == 1)
             return false;
     }
-    for (int j = 0; j < v.at(0).size(); j++)
+    for (int j = 0; j < v[0].size(); j++)
     {
         int s = 0;
         for (int i = 0; i < v.size(); i++)
-            s += v.at(i).at(j);
+            s += v[i][j];
         if (s % 2 == 1)
             return false;
     }
@@ -31,9 +31,9 @@ int main(void)
         vector< vector<int> > v(n);
         for (int i = 0; i < n; i++)
         {
-            v.at(i).resize(n);
+            v[i].resize(n);
             for (int j = 0; j < n; j++)
-                cin >> v.at(i).at(j);
+                cin >> v[i][j];
         }
         if (test(v))
         {
@@ -47,7 +47,7 @@ int main(void)
                 break;
             for (int j = 0; j < n; j++)
             {
-                v.at(i).at(j) = !v.at(i).at(j);
+                v[i][j] = !v[i][j];
                 if (test(v))
                 {
                     cout << "Change bit (" << i + 1 << "," << j + 1 << ")"
@@ -55,7 +55,7 @@ int main(void)
                     found = true;
                     break;
                 }
-                v.at(i).at(j) = !v.at(i).at(j);
+                v[i][j] = !v[i][j];
             }
         }
         if (!found)

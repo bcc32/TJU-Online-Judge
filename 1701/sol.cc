@@ -28,7 +28,7 @@ int main(void)
         cin >> s >> m;
         vector<int> v(m);
         for (int j = 0; j < m; j++)
-            cin >> v.at(j);
+            cin >> v[j];
         sort(v.begin(), v.end(), cmp);
         for (int j = 0; j < v.size(); j++)
             if (sum(v.begin(), v.begin() + j) >= s)

@@ -21,8 +21,8 @@ int main(void)
     {
         int x = carry;
         for (int j = 0; j < v.size(); j++)
-            if (i < v.at(j).size())
-                x += (int)v.at(j)[i] - (int)'0';
+            if (i < v[j].size())
+                x += (int)v[j][i] - (int)'0';
         carry = x / 10;
         sum += (char)(x % 10) + '0';
     }

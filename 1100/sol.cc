@@ -21,11 +21,11 @@ int main(void)
     {
         vector<int> v(n);
         for (int i = 0; i < n; i++)
-            cin >> v.at(i);
+            cin >> v[i];
         int x = 0, y = n * (n - 1) / 2;
         for (int i = 0; i < v.size(); i++)
             for (int j = i + 1; j < v.size(); j++)
-                if (gcd(v.at(i), v.at(j)) == 1)
+                if (gcd(v[i], v[j]) == 1)
                     x++;
         if (x == 0)
             cout << "No estimate for this data set." << endl;
