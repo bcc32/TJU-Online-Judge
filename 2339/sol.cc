@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int ndiv(int n);
+int ndiv(long long n);
 
 int main(void)
 {
@@ -9,16 +9,16 @@ int main(void)
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        int x;
+        long long x;
         cin >> x;
         cout << "Scenario #" << i + 1 << ":" << endl << (ndiv(x * x) + 1) / 2
             << endl << endl;
     }
 }
 
-int ndiv(int n)
+int ndiv(long long n)
 {
-    int i, c = 0;
+    long long i, c = 0;
     for (i = 1; i * i < n; i++)
         if (n % i == 0) c++;
     c *= 2;
