@@ -1,16 +1,27 @@
 #include <iostream>
 using namespace std;
 
+int ndiv(int n);
+
 int main(void)
 {
     int n;
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        int x, c = 0;
+        int x;
         cin >> x;
-        for (int j = 2 * x; j > x; j--)
-            if (j * x % (j - x) == 0) c++;
-        cout << "Scenario #" << i + 1 << ":" << endl << c << endl << endl;
+        cout << "Scenario #" << i + 1 << ":" << endl << (ndiv(x * x) + 1) / 2
+            << endl << endl;
     }
+}
+
+int ndiv(int n)
+{
+    int i, c = 0;
+    for (i = 1; i * i < n; i++)
+        if (n % i == 0) c++;
+    c *= 2;
+    if (i * i == n) c++;
+    return c;
 }
