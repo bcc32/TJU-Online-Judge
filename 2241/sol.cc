@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <map>
 using namespace std;
 
 int main(void)
@@ -10,11 +10,12 @@ int main(void)
     {
         int m;
         cin >> m;
-        vector<int> v(m);
+        map<int, int> v;
         for (int j = 1; j < m; j++)
         {
-            int x;
-            cin >> x >> v[j];
+            int a, b;
+            cin >> a >> b;
+            v[a] = b;
         }
         cin >> m;
         for (int j = 0; j < m; j++)
