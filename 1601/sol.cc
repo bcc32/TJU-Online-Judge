@@ -18,7 +18,7 @@ int main(void)
         }
         int a = s / n;
         int x = 0;
-        for (vector<int>::iterator it = v.begin(); it < v.end(); it++)
+        for (vector<int>::iterator it = v.begin(); it < v.end(); ++it)
             x += abs(*it - a);
         cout << "The minimum number of moves is " << x / 2 << "." << endl
             << endl;

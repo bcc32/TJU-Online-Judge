@@ -32,7 +32,7 @@ int main(void)
             {
                 set<int>::iterator it = s.begin();
                 int n = s.size() % 2 == 0 ? s.size() / 2 - 1 : s.size() / 2;
-                for (int i = 0; i < n; i++) it++;
+                for (int i = 0; i < n; i++) ++it;
                 cout << *it << endl;
             }
         }

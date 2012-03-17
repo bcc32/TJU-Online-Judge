@@ -9,7 +9,7 @@ int main (void)
     for (getline(cin, s); s != "ENDOFINPUT"; getline(cin, s))
     {
         getline(cin, s);
-        for (string::iterator it = s.begin(); it < s.end(); it++)
+        for (string::iterator it = s.begin(); it < s.end(); ++it)
             if (*it >= 'A' && *it <= 'Z')
                 cout << d(*it);
             else cout << *it;

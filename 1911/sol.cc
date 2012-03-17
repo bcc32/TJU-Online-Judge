@@ -21,7 +21,7 @@ int main(void)
 
 bool t1(string s)
 {
-    for (string::iterator it = s.begin(); it < s.end(); it++)
+    for (string::iterator it = s.begin(); it < s.end(); ++it)
         if (vowelq(*it)) return true;
     return false;
 }
@@ -29,7 +29,7 @@ bool t1(string s)
 bool t2(string s)
 {
     int b1 = 0, b2 = 0;
-    for (string::iterator it = s.begin(); it < s.end(); it++)
+    for (string::iterator it = s.begin(); it < s.end(); ++it)
     {
         if ((vowelq(*it) && b1 == 1 && b2 == 1) ||
             (!vowelq(*it) && b1 == 2 && b2 == 2))
@@ -43,7 +43,7 @@ bool t2(string s)
 bool t3(string s)
 {
     char l = ' ';
-    for (string::iterator it = s.begin(); it < s.end(); it++)
+    for (string::iterator it = s.begin(); it < s.end(); ++it)
     {
         if (*it == l && l != 'e' && l != 'o') return false;
         l = *it;

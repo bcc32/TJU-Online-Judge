@@ -18,7 +18,7 @@ int main(void)
             cin >> v[j];
             s += v[j];
         }
-        for (vector<int>::iterator it = v.begin(); it < v.end(); it++)
+        for (vector<int>::iterator it = v.begin(); it < v.end(); ++it)
             if (*it * v.size() > s)
                 c++;
         cout << (double)c / v.size() * 100 << "%" << endl;

@@ -14,7 +14,7 @@ int main(void)
             cin >> v[i];
         sort(v.begin(), v.end(), greater<int>());
         int max = -1;
-        for (vector<int>::iterator it = v.begin(); it < v.end(); it++)
+        for (vector<int>::iterator it = v.begin(); it < v.end(); ++it)
         {
             for (vector<int>::iterator a = v.begin(); a < v.end(); a++)
             {

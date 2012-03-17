@@ -21,7 +21,7 @@ int main(void)
             next_permutation(s.begin(), s.end()))
         {
             int c = 0;
-            for (vector<string>::iterator it = v.begin(); it < v.end(); it++)
+            for (vector<string>::iterator it = v.begin(); it < v.end(); ++it)
                 c += d(s, *it);
             if (c < m)
             {

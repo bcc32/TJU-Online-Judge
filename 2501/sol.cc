@@ -10,7 +10,7 @@ int main(void)
         int c = 0, x = 0;
         string s;
         cin >> s;
-        for (string::iterator it = s.begin(); it < s.end(); it++)
+        for (string::iterator it = s.begin(); it < s.end(); ++it)
         {
             if (*it == 'O')
                 x += ++c;

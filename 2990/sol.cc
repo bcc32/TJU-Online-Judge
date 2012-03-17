@@ -18,7 +18,7 @@ int main(void)
         vector<int> v(b);
         for (int j = 0; j < b; j++)
             cin >> v[j];
-        for (vector<int>::iterator it = u.begin(); it < u.end(); it++)
+        for (vector<int>::iterator it = u.begin(); it < u.end(); ++it)
             c += count(v.begin(), v.end(), -*it);
         cout << c << endl;
     }

@@ -23,10 +23,10 @@ int main(void)
             cin >> z;
             y.insert(z);
         }
-        for (set<int>::iterator it = x.begin(); it != x.end(); it++)
+        for (set<int>::iterator it = x.begin(); it != x.end(); ++it)
             if (y.find(*it) != y.end())
                 c.insert(*it);
-        for (set<int>::iterator it = c.begin(); it != c.end(); it++)
+        for (set<int>::iterator it = c.begin(); it != c.end(); ++it)
             if (it == c.begin())
                 cout << *it;
             else

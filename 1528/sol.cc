@@ -32,7 +32,7 @@ int gcd(int a, int b)
 int lcm(vector<int> v)
 {
     int l = 1;
-    for (vector<int>::iterator it = v.begin(); it < v.end(); it++)
+    for (vector<int>::iterator it = v.begin(); it < v.end(); ++it)
         l = l / gcd(l, *it) * *it;
     return l;
 }

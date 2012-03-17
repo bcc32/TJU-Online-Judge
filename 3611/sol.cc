@@ -21,7 +21,7 @@ int main(void)
 int sum(set<int> s)
 {
     int x = 0;
-    for (set<int>::iterator it = s.begin(); it != s.end(); it++)
+    for (set<int>::iterator it = s.begin(); it != s.end(); ++it)
     {
         x += *it;
         x %= 1000000007;

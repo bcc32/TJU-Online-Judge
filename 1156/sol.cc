@@ -21,7 +21,7 @@ int num(string s, int b, int sdigits)
 int sdig(string s)
 {
     int a = 0;
-    for (string::iterator it = s.begin(); it < s.end(); it++)
+    for (string::iterator it = s.begin(); it < s.end(); ++it)
         a += (int)*it - (int)'0';
     return a;
 }

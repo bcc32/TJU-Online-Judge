@@ -54,14 +54,14 @@ void a(string &s)
 
 void p(string& s)
 {
-    for (string::iterator it = s.begin(); it < s.end(); it++)
+    for (string::iterator it = s.begin(); it < s.end(); ++it)
         if (*it >= '1' && *it <= '9') (*it)--;
         else if (*it == '0') *it = '9';
 }
 
 void m(string& s)
 {
-    for (string::iterator it = s.begin(); it < s.end(); it++)
+    for (string::iterator it = s.begin(); it < s.end(); ++it)
         if (*it >= '0' && *it <= '8') (*it)++;
         else if (*it == '9') *it = '0';
 }

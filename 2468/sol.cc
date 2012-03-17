@@ -12,7 +12,7 @@ int main(void)
         string s;
         cin >> s;
         int max = 0;
-        for (string::iterator it = s.begin(); it < s.end(); it++)
+        for (string::iterator it = s.begin(); it < s.end(); ++it)
             m[*it]++;
         for (char c = 'a'; c <= 'z'; c++)
             if (m[c] > max)

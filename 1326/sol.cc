@@ -27,7 +27,7 @@ int main(void)
     {
         char last = ' ';
         string o;
-        for (string::iterator it = s.begin(); it < s.end(); it++)
+        for (string::iterator it = s.begin(); it < s.end(); ++it)
         {
             if (soundex(*it) > 0 && soundex(*it) != soundex(*(it - 1)))
                 o += soundex(*it);

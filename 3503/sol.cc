@@ -21,7 +21,7 @@ int main(void)
                 m[x]++;
         }
         int max = 1;
-        for (map<int, int>::iterator it = m.begin(); it != m.end(); it++)
+        for (map<int, int>::iterator it = m.begin(); it != m.end(); ++it)
             if (it->second > max)
                 max = it -> second;
         cout << max << endl;

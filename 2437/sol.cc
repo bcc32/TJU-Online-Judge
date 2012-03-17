@@ -8,7 +8,7 @@ int main(void)
     for (bool f = true; f; ) // XXX ugly...
     {
         f = false;
-        for (string::iterator it = s.begin() + 2; it < s.end(); it++)
+        for (string::iterator it = s.begin() + 2; it < s.end(); ++it)
             if (*it == *(it - 2))
             {
                 s.erase(it);

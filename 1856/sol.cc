@@ -15,11 +15,11 @@ int main(void)
         getline(cin, a);
         getline(cin, b);
         map<char, int> m, M;
-        for (string::iterator it = a.begin(); it < a.end(); it++)
+        for (string::iterator it = a.begin(); it < a.end(); ++it)
             if (m.find(*it) == m.end())
                 m[*it] = 1;
             else m[*it]++;
-        for (string::iterator it = b.begin(); it < b.end(); it++)
+        for (string::iterator it = b.begin(); it < b.end(); ++it)
             if (M.find(*it) == M.end())
                 M[*it] = 1;
             else M[*it]++;

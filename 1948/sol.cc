@@ -41,7 +41,7 @@ char itoc(int n)
 int atoi(string s, int b)
 {
 	int c = 0;
-	for (string::iterator it = s.begin(); it < s.end(); it++)
+	for (string::iterator it = s.begin(); it < s.end(); ++it)
 	{
 		c *= b;
 		c += ctoi(*it);

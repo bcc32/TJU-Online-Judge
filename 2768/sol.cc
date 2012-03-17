@@ -13,7 +13,7 @@ int main(void)
     for (int i = 0; i < n; i++)
         cin >> v[i];
     sort(v.begin(), v.end(), cmp);
-    for (vector<int>::iterator it = v.begin(); it < v.end(); it++)
+    for (vector<int>::iterator it = v.begin(); it < v.end(); ++it)
     {
         if (c == 0)
             break;

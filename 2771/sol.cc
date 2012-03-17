@@ -11,7 +11,7 @@ int main(void)
         string s;
         cin >> s;
         int *v = (int *) calloc(52, sizeof(int));
-        for (string::iterator it = s.begin(); it < s.end(); it++)
+        for (string::iterator it = s.begin(); it < s.end(); ++it)
             if (*it >= 'A' && *it <= 'Z')
                 v[(int)(*it - 'A')]++;
             else if (*it >= 'a' && *it <= 'z')

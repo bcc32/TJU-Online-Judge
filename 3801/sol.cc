@@ -6,7 +6,7 @@ using namespace std;
 vector<string> ld(vector<string> v)
 {
     vector<string> f;
-    for (vector<string>::iterator it = v.begin(); it < v.end(); it++)
+    for (vector<string>::iterator it = v.begin(); it < v.end(); ++it)
         f.push_back(it->substr(1));
     return f;
 }

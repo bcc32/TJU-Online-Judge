@@ -11,7 +11,7 @@ bool cmp(int a, int b)
 int sum(vector<int>::iterator a, vector<int>::iterator b)
 {
     int s = 0;
-    for (vector<int>::iterator it = a; it <= b; it++)
+    for (vector<int>::iterator it = a; it <= b; ++it)
         s += *it;
     return s;
 }

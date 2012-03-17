@@ -23,7 +23,7 @@ int main(void)
 string trans(string s)
 {
     string t = s;
-    for (string::iterator it = t.begin(); it < t.end(); it++)
+    for (string::iterator it = t.begin(); it < t.end(); ++it)
         if (*it >= 'A' && *it <= 'Z')
             *it += 32;
     return t;

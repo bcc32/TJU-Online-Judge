@@ -22,7 +22,7 @@ int main(void)
 string dec(string s)
 {
     string f;
-    for (string::iterator it = s.begin(); it < s.end(); it++)
+    for (string::iterator it = s.begin(); it < s.end(); ++it)
         if (*it == ' ')
             f += ' ';
         else
