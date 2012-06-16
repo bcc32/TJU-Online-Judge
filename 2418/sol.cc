@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <utility>
 #define abs(x) ((x) > 0 ? (x) : -(x))
 #define MIN 10000000
 using namespace std;
@@ -12,29 +13,29 @@ int main(void)
     {
         int a, b;
         cin >> a >> b;
-        vector< vector<int> > v(b);
+        vector< pair< pair<int, int>, int > > v;
         for (int j = 0; j < b; j++)
         {
-            v[j].resize(a);
             for (int k = 0; k < a; k++)
-                cin >> v[j][k];
+            {
+                int x;
+                cin >> x;
+                if (x > 0)
+                    v.push_back(make_pair(make_pair(j, k), x));
+            }
         }
         int m = MIN;
         for (int j = 0; j < b; j++)
             for (int k = 0; k < a; k++)
             {
+                // each corner is a pizza shop
                 int c = 0;
-                for (int _j = 0; _j < b; _j++)
-                    for (int _k = 0; _k < a; _k++)
-                        c += v[_j][_k] * (abs(_j - j) + abs(_k - k));
+                for (int t = 0; t < v.size(); t++)
+                    c += (abs(j - v[t].first.first) +
+                        abs(k - v[t].first.second)) * v[t].second;
                 if (c < m)
                     m = c;
             }
         cout << m << " blocks" << endl;
     }
-}
-
-bool cmp(pair< pair<int, int>, int > a, pair< pair<int, int>, int> b)
-{
-    return a.second < b.second;
 }
