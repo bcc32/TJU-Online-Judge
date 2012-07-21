@@ -1,7 +1,15 @@
 #include <iostream>
 #include <vector>
-#include <set>
+#include <map>
+#include <queue>
+#include <algorithm>
 using namespace std;
+
+vector< pair< vector<int>, bool > > v;
+
+bool pred(pair< vector<int>, bool >);
+void make_link(int, int);
+void mark_flood(int);
 
 int main(void)
 {
@@ -9,51 +17,52 @@ int main(void)
     cin >> t;
     for (int i = 0; i < t; i++)
     {
-        vector< set<int> > v;
         int n, m;
         cin >> n >> m;
+        v.resize(n);
+        for (int j = 0; j < n; j++)
+        {
+            v[j].first.clear();
+            v[j].second = false;
+        }
         for (int j = 0; j < m; j++)
         {
             int a, b;
             cin >> a >> b;
-            bool f = false;
-            for (int k = 0; k < v.size(); k++)
-                if (v[k].find(a) != v[k].end())
-                {
-                    v[k].insert(b);
-                    f = true;
-                    break;
-                }
-                else if (v[k].find(b) != v[k].end())
-                {
-                    v[k].insert(a);
-                    f = true;
-                    break;
-                }
-            if (!f)
-            {
-                set<int> s;
-                s.insert(a);
-                s.insert(b);
-                v.push_back(s);
-            }
+            make_link(a - 1, b - 1);
         }
-        for (int j = 1; j <= n; j++)
-        {
-            bool f = false;
-            for (int k = 0; k < v.size(); k++)
-                if (v[k].find(j) != v[k].end())
-                {
-                    f = true;
-                    break;
-                }
-            if (!f)
+        int rooms;
+        for (rooms = 0; count_if(v.begin(), v.end(), pred) > 0; rooms++)
+            mark_flood(find_if(v.begin(), v.end(), pred) - v.begin());
+        cout << rooms << endl;
+    }
+}
+
+bool pred(pair< vector<int>, bool > p)
+{
+    return !p.second;
+}
+
+void make_link(int a, int b)
+{
+    v[a].first.push_back(b);
+    v[b].first.push_back(a);
+}
+
+void mark_flood(int a)
+{
+    queue<int> open_list;
+    open_list.push(a);
+    v[a].second = true;
+    while (open_list.size() > 0)
+    {
+        int curr = open_list.front();
+        open_list.pop();
+        for (int i = 0; i < v[curr].first.size(); i++)
+            if (!v[v[curr].first[i]].second)
             {
-                set<int> s;
-                s.insert(j);
-                v.push_back(s);
+                v[v[curr].first[i]].second = true;
+                open_list.push(v[curr].first[i]);
             }
-        }
-        cout << v.size() << endl;
     }
 }
