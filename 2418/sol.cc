@@ -1,9 +1,12 @@
 #include <iostream>
 #include <vector>
-#include <utility>
 #define abs(x) ((x) > 0 ? (x) : -(x))
-#define MIN 10000000
 using namespace std;
+
+vector< vector<int> > v;
+
+int row(int);
+int column(int);
 
 int main(void)
 {
@@ -13,29 +16,45 @@ int main(void)
     {
         int a, b;
         cin >> a >> b;
-        vector< pair< pair<int, int>, int > > v;
+        v.resize(b);
         for (int j = 0; j < b; j++)
         {
+            v[j].resize(a);
             for (int k = 0; k < a; k++)
-            {
-                int x;
-                cin >> x;
-                if (x > 0)
-                    v.push_back(make_pair(make_pair(j, k), x));
-            }
+                cin >> v[j][k];
         }
-        int m = MIN;
-        for (int j = 0; j < b; j++)
-            for (int k = 0; k < a; k++)
-            {
-                // each corner is a pizza shop
-                int c = 0;
-                for (int t = 0; t < v.size(); t++)
-                    c += (abs(j - v[t].first.first) +
-                        abs(k - v[t].first.second)) * v[t].second;
-                if (c < m)
-                    m = c;
-            }
-        cout << m << " blocks" << endl;
+        int mincol = column(0);
+        for (int j = 1; j < a; j++)
+        {
+            int c = column(j);
+            if (c < mincol)
+                mincol = c;
+        }
+        int minrow = row(0);
+        for (int j = 1; j < b; j++)
+        {
+            int r = row(j);
+            if (r < minrow)
+                minrow = r;
+        }
+        cout << minrow + mincol << " blocks" << endl;
     }
+}
+
+int row(int i)
+{
+    int s = 0;
+    for (int j = 0; j < v.size(); j++)
+        for (int k = 0; k < v[j].size(); k++)
+            s += abs(j - i) * v[j][k];
+    return s;
+}
+
+int column(int j)
+{
+    int s = 0;
+    for (int i = 0; i < v.size(); i++)
+        for (int k = 0; k < v[i].size(); k++)
+            s += abs(k - j) * v[i][k];
+    return s;
 }
