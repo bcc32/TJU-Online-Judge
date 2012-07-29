@@ -7,10 +7,10 @@ int main(void)
 {
     map<char, char> m;
     string a, b;
-    cin >> a >> b;
+    getline(cin, a);
+    getline(cin, b);
     for (int i = 0; i < a.size(); i++)
         m[a[i]] = b[i];
-    cin.get();
     cout << b << endl;
     cout << a << endl;
     for (char c = cin.get(); !cin.eof(); c = cin.get())
