@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
 bool test(int, int);
@@ -17,16 +16,11 @@ int main(void)
 
 bool test(int k, int m)
 {
-    vector<bool> v(k * 2);
-    for (vector<bool>::iterator it = v.begin(); it < v.end(); ++it)
-        *it = false;
-    int n = -1;
-    for (int i = 0; i < k; i++)
+    int prev = 0;
+    for (int i = k * 2; i > k; i--)
     {
-        for (int j = 0; j < m; j++)
-            while (v[++n % v.size()]);
-        v[n % v.size()] = true;
-        if (n % v.size() < k)
+        prev = (prev + m - 1) % i;
+        if (prev < k)
             return false;
     }
     return true;
