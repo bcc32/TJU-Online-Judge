@@ -20,7 +20,7 @@ int main(void)
     {
         string s;
         cin >> s;
-        for (string::iterator it = s.begin(); it < s.end(); it++)
+        for (string::iterator it = s.begin(); it < s.end(); ++it)
         {
             if (*it == '1')
                 v[i][it - s.begin()] = false;
