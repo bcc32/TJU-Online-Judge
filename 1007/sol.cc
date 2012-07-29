@@ -1,16 +1,22 @@
 #include <iostream>
+#include <map>
 using namespace std;
 
 bool test(int, int);
 
 int main(void)
 {
+    map<int, int> dict;
     int k;
     for (cin >> k; k != 0; cin >> k)
     {
-        int m = 0;
-        while (!test(k, ++m));
-        cout << m << endl;
+        if (dict.find(k) == dict.end())
+        {
+            int m = 0;
+            while (!test(k, ++m));
+            dict[k] = m;
+        }
+        cout << dict[k] << endl;
     }
 }
 
