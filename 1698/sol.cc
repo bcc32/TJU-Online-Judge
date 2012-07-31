@@ -1,41 +1,51 @@
-#include <iostream>
-#define next(i) ((i) == 9 ? 7 : (i) == 7 ? 3 : 9)
+#include <cstdio>
+#include <sstream>
+#define ord(ch) ((int)(ch - '0'))
+#define next(n) ((n) == 9 ? 3 : (n) == 3 ? 7 : 9)
 using namespace std;
 
-int cksum(int a, int n, int b);
+string repl(string, int);
+bool test(string);
 
 int main(void)
 {
     int n;
-    cin >> n;
+    scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
-        cout << "Scenario #" << i + 1 << ":" << endl;
-        int a, b;
-        cin >> a;
-        cin.get(); // ignore '?'
-        cin >> b;
-        int n;
-        for (n = 0; n < 10; n++)
-            if (cksum(a, n, b) % 10 == 0)
+        char *temp;
+        scanf("%s", temp);
+        string str(temp);
+        int ans = -1;
+        for (int j = 0; j < 10; j++)
+            if (test(repl(str, j)))
+            {
+                ans = j;
                 break;
-        cout << a << n << b << endl;
+            }
+        printf("Scenario #%d:\n", i + 1);
+        printf("%s\n\n", repl(str, ans).c_str());
     }
 }
 
-int cksum(int a, int n, int b) // FIXME WRONG DIRECTION
+string repl(string str, int n)
 {
-    int s = 0;
-    int k;
-    for (k = 9; a > 0; k = next(k))
+    ostringstream ss;
+    for (int i = 0; i < str.size(); i++)
+        if (str[i] == '?')
+            ss << n;
+        else
+            ss << str[i];
+    return ss.str();
+}
+
+bool test(string str)
+{
+    int foo = 9, sum = 0;
+    for (string::reverse_iterator it = str.rbegin(); it < str.rend(); ++it)
     {
-        s += k * (a / 10);
-        a %= 10;
+        sum = (sum + ord(*it) * foo) % 10;
+        foo = next(foo);
     }
-    s += k * n;
-    for (k = next(k); b > 0; k = next(k))
-    {
-        s += k * (b / 10);
-        b /= 10;
-    }
+    return sum == 0;
 }
