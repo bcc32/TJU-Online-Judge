@@ -1,13 +1,10 @@
 #include <iostream>
 #include <sstream>
-#include <cassert>
 #include <map>
 using namespace std;
 
 map<int, int> factors;
 
-void addfactor(int);
-void subfactor(int);
 void factor(int);
 void unfactor(int);
 
@@ -33,31 +30,17 @@ int main(void)
     }
 }
 
-void addfactor(int n)
-{
-    if (factors.find(n) != factors.end())
-        factors[n]++;
-    else
-        factors[n] = 1;
-}
-
-void subfactor(int n)
-{
-    assert(factors.find(n) != factors.end());
-    factors[n]--;
-}
-
 void factor(int n)
 {
     int o = n;
     for (int i = 2; i * i <= o; i++)
         while (n % i == 0)
         {
-            addfactor(i);
+            factors[i]++;
             n /= i;
         }
     if (n > 1)
-        addfactor(n);
+        factors[n]++;
 }
 
 void unfactor(int n)
@@ -66,9 +49,9 @@ void unfactor(int n)
     for (int i = 2; i * i <= o; i++)
         while (n % i == 0)
         {
-            subfactor(i);
+            factors[i]--;
             n /= i;
         }
     if (n > 1)
-        subfactor(n);
+        factors[n]--;
 }
