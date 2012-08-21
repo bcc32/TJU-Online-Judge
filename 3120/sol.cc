@@ -2,37 +2,29 @@
 #include <vector>
 using namespace std;
 
-int max(vector<int> v, int i);
-
 int main(void)
 {
     int n;
     for (cin >> n; !cin.eof(); cin >> n)
     {
-        vector<int> v(n);
+        vector<int> v(n), u(n);
         for (int i = 0; i < n; i++)
             cin >> v[i];
-        int m = 0;
-        for (int i = 0; i < v.size(); i++)
+        int max = 1;
+        u[0] = 1;
+        for (int i = 1; i < n; i++)
         {
-            int x = max(v, i);
-            if (x > m)
-                m = x;
+            int m = -1;
+            for (int j = 0; j < i; j++)
+                if (v[i] > v[j] && u[j] > u[m])
+                    m = j;
+            if (m >= 0)
+                u[i] = u[m] + 1;
+            else
+                u[i] = 1;
+            if (u[i] > max)
+                max = u[i];
         }
-        cout << m << endl;
+        cout << max << endl;
     }
-}
-
-int max(vector<int> v, int i)
-{
-    if (i = v.size() - 1) return v[i];
-    int s = 0;
-    for (int j = i + 1; j < v.size(); j++)
-    {
-        if (v[j] <= v[i]) continue;
-        int m = max(v, j);
-        if (m > s)
-            s = m;
-    }
-    return s;
 }
