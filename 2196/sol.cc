@@ -1,5 +1,7 @@
 #include <iostream>
-#include <set>
+#include <vector>
+#include <queue>
+#include <functional>
 using namespace std;
 
 bool cmp(string a, string b);
@@ -9,28 +11,22 @@ int main(void)
     int n;
     for (cin >> n; n != 0; cin >> n)
     {
-        set<string> s;
+        priority_queue< int, vector<int>, greater<int> > q;
         for (int i = 0; i < n; i++)
         {
             char c;
             cin >> c;
             if (c == 'B')
             {
-                string x;
+                int x;
                 cin >> x;
-                s.insert(x);
+                q.push(x);
             }
             else if (c == 'G')
             {
-                set<string>::iterator it = s.begin();
-                cout << *it << endl;
-                s.erase(it);
+                cout << q.top() << endl;
+                q.pop();
             }
         }
     }
-}
-
-bool cmp(string a, string b)
-{
-    return a.size() < b.size() || (a.size() <= b.size() && a < b);
 }
