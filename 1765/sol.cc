@@ -14,7 +14,7 @@ int main(void)
     {
         int m = -1;
         for (int j = 0; j < n; j++)
-            if (v[j] < v[i] && u[j] > u[m])
+            if (v[j] < v[i] && (m < 0 || u[j] > u[m]))
                 m = j;
         if (m >= 0)
             u[i] = u[m] + 1;
