@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main(void)
@@ -25,5 +26,5 @@ int main(void)
         else
             u[i] = u[M];
     }
-    cout << u[n - 1] << endl;
+    cout << *max_element(u.begin(), u.end()) << endl;
 }
