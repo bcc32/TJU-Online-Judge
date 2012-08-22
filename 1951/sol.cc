@@ -25,7 +25,10 @@ int main(void)
                 ss << term(v[i], 8 - i, true);
             else
                 ss << term(v[i], 8 - i, false);
-        cout << ss.str() << endl;
+        if (ss.tellp() > 0)
+            cout << ss.str() << endl;
+        else
+            cout << "0" << endl;
     }
 }
 
