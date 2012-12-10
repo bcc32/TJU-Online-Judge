@@ -51,9 +51,9 @@ int main(void)
             }
             s++;
         } while (!loop(curr) && !exit(curr));
-        if (loop(curr))
-            printf("%d step(s) before a loop of %d step(s)\n", s - loop(curr),
-                loop(curr));
+        int a = loop(curr);
+        if (a)
+            printf("%d step(s) before a loop of %d step(s)\n", s - a, a);
         else if (exit(curr))
             printf("%d step(s) to exit\n", s);
         else
@@ -71,5 +71,5 @@ int loop(pair<int, int> p)
 
 bool exit(pair<int, int> p)
 {
-    return p.first < 0 || p.first >= b || p.second < 0 || p.second >= b;
+    return p.first < 0 || p.first >= a || p.second < 0 || p.second >= b;
 }
