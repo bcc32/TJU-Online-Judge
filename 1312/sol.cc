@@ -1,3 +1,4 @@
+// TODO FIX 6-stone issue
 #include <iostream>
 using namespace std;
 
@@ -55,9 +56,9 @@ int main(void)
                     v[i][j] == v[i + 3][j - 3] &&
                     v[i][j] == v[i + 4][j - 4])
                 {
-                    winner = v[i][j];
-                    x = i;
-                    y = j;
+                    winner = v[i + 4][j - 4];
+                    x = i + 4;
+                    y = j - 4;
                     goto done;
                 }
 
