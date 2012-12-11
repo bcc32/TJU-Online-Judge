@@ -19,7 +19,8 @@ int main(void)
     set = (frac *)malloc(LIM * sizeof(frac));
     init();
 
-    for (int n; scanf("%d", &n) == 1; )
+    int n;
+    while (scanf("%d", &n) == 1)
         printf("TERM %d IS %d/%d\n", n, set[n - 1].n, set[n - 1].d);
 
     free(set);
