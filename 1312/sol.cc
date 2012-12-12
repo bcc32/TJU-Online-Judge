@@ -17,9 +17,11 @@ int main(void)
                 cin >> v[i][j];
         for (int i = 0; i < LEN; i++)
             for (int j = 0; j < LEN - 4; j++)
-                if (v[i][j] > 0 && v[i][j] == v[i][j + 1] &&
-                        v[i][j] == v[i][j + 2] && v[i][j] == v[i][j + 3] &&
-                        v[i][j] == v[i][j + 4])
+                if (v[i][j] > 0 &&
+                        (j == 0 || v[i][j - 1] != v[i][j]) &&
+                        (j == LEN - 5 || v[i][j + 5] != v[i][j]) &&
+                        v[i][j] == v[i][j + 1] && v[i][j] == v[i][j + 2] &&
+                        v[i][j] == v[i][j + 3] && v[i][j] == v[i][j + 4])
                 {
                     winner = v[i][j];
                     x = i;
@@ -28,9 +30,11 @@ int main(void)
                 }
         for (int i = 0; i < LEN - 4; i++)
             for (int j = 0; j < LEN; j++)
-                if (v[i][j] > 0 && v[i][j] == v[i + 1][j] &&
-                        v[i][j] == v[i + 2][j] && v[i][j] == v[i + 3][j] &&
-                        v[i][j] == v[i + 4][j])
+                if (v[i][j] > 0 &&
+                        (i == 0 || v[i - 1][j] != v[i][j]) &&
+                        (i == LEN - 5 || v[i + 5][j] != v[i][j]) &&
+                        v[i][j] == v[i + 1][j] && v[i][j] == v[i + 2][j] &&
+                        v[i][j] == v[i + 3][j] && v[i][j] == v[i + 4][j])
                 {
                     winner = v[i][j];
                     x = i;
@@ -39,7 +43,11 @@ int main(void)
                 }
         for (int i = 0; i < LEN - 4; i++)
             for (int j = 0; j < LEN - 4; j++)
-                if (v[i][j] > 0 && v[i][j] == v[i + 1][j + 1] &&
+                if (v[i][j] > 0 &&
+                        (i == 0 || j == 0 || v[i - 1][j - 1] != v[i][j]) &&
+                        (i == LEN - 5 || j == LEN - 5 ||
+                            v[i + 5][j + 5] != v[i][j]) &&
+                        v[i][j] == v[i + 1][j + 1] &&
                         v[i][j] == v[i + 2][j + 2] &&
                         v[i][j] == v[i + 3][j + 3] &&
                         v[i][j] == v[i + 4][j + 4])
@@ -51,7 +59,10 @@ int main(void)
                 }
         for (int i = 0; i < LEN - 4; i++)
             for (int j = 4; j < LEN; j++)
-                if (v[i][j] > 0 && v[i][j] == v[i + 1][j - 1] &&
+                if (v[i][j] > 0 &&
+                    (i == 0 || j == LEN - 1 || v[i - 1][j + 1] != v[i][j]) &&
+                    (i == LEN - 5 || j == 4 || v[i + 5][j - 5] != v[i][j]) &&
+                    v[i][j] == v[i + 1][j - 1] &&
                     v[i][j] == v[i + 2][j - 2] &&
                     v[i][j] == v[i + 3][j - 3] &&
                     v[i][j] == v[i + 4][j - 4])
