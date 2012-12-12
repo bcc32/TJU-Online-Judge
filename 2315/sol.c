@@ -34,7 +34,14 @@ int proc(int i)
         i++;
         mark('(');
         while (i < len && line[i] != ')')
+        {
+            if (line[i] == ']')
+            {
+                mark(')');
+                return i;
+            }
             i = proc(i);
+        }
         mark(')');
         return i + 1;
     }
@@ -49,7 +56,14 @@ int proc(int i)
         i++;
         mark('[');
         while (i < len && line[i] != ']')
+        {
+            if (line[i] == ')')
+            {
+                mark(']');
+                return i;
+            }
             i = proc(i);
+        }
         mark(']');
         return i + 1;
     }
