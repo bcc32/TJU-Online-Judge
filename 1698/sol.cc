@@ -1,51 +1,41 @@
-#include <cstdio>
-#include <sstream>
-#define ord(ch) ((int)(ch - '0'))
-#define next(n) ((n) == 9 ? 3 : (n) == 3 ? 7 : 9)
+#include <iostream>
+#define next(i) ((i) == 9 ? 3 : (i) == 3 ? 7 : 3)
 using namespace std;
 
-string repl(string, int);
-bool test(string);
+int cksum(int a, int n, int b);
 
 int main(void)
 {
     int n;
-    scanf("%d", &n);
+    cin >> n;
     for (int i = 0; i < n; i++)
     {
-        char *temp;
-        scanf("%s", temp);
-        string str(temp);
-        int ans = -1;
-        for (int j = 0; j < 10; j++)
-            if (test(repl(str, j)))
-            {
-                ans = j;
+        cout << "Scenario #" << i + 1 << ":" << endl;
+        int a, b; // FIXME b can have leading zeroes
+        cin >> a;
+        cin.get(); // ignore '?'
+        cin >> b;
+        int n;
+        for (n = 0; n < 10; n++)
+            if (cksum(a, n, b) % 10 == 0)
                 break;
-            }
-        printf("Scenario #%d:\n", i + 1);
-        printf("%s\n\n", repl(str, ans).c_str());
+        cout << a << n << b << endl << endl;
     }
 }
 
-string repl(string str, int n)
+int cksum(int a, int n, int b)
 {
-    ostringstream ss;
-    for (int i = 0; i < str.size(); i++)
-        if (str[i] == '?')
-            ss << n;
-        else
-            ss << str[i];
-    return ss.str();
-}
-
-bool test(string str)
-{
-    int foo = 9, sum = 0;
-    for (string::reverse_iterator it = str.rbegin(); it < str.rend(); ++it)
+    int s = 0;
+    int k;
+    for (k = next(k); b > 0; k = next(k))
     {
-        sum = (sum + ord(*it) * foo) % 10;
-        foo = next(foo);
+        s += k * (b % 10);
+        b /= 10;
     }
-    return sum == 0;
+    s += k * n;
+    for (k = 9; a > 0; k = next(k))
+    {
+        s += k * (a % 10);
+        a /= 10;
+    }
 }
